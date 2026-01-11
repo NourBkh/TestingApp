@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USER = 'YOUR_DOCKERHUB_USERNAME'
+        DOCKERHUB_USER = 'nourbkh'
         IMAGE_NAME    = 'testingapp'
         K8S_NAMESPACE = 'default'
     }
@@ -22,6 +22,13 @@ pipeline {
                 echo "installing dependencies"
                 sh 'npm install'
                 }
+          }
+        }
+        
+        stage('build docker image') {
+          steps {
+              echo "building docker image"
+              sh 'docker build -t $DOCKERHUB_USER/$IMAGE_NAME:latest .'
           }
         }
 
