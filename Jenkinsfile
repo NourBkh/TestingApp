@@ -4,9 +4,9 @@ pipline {
   
   environment {
   
-  DOCKERHUB_USER=
-  IMAGE_NAME=
-  K8S_NAMESPACE=
+  DOCKERHUB_USER = 'YOUR_DOCKERHUB_USERNAME'
+  IMAGE_NAME    = 'testingapp'
+  K8S_NAMESPACE = 'default'
   
   }
   
