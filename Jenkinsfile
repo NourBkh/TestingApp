@@ -18,8 +18,10 @@ pipeline {
         
         stage('install dependencies') {
           steps {
-               echo "installing dependencies"
-               sh 'npm install'
+             dir('app') {
+                echo "installing dependencies"
+                sh 'npm install'
+                }
           }
         }
 
