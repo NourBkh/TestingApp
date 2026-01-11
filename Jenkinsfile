@@ -15,6 +15,13 @@ pipeline {
                 git branch: 'main', url: 'git@github.com:NourBkh/TestingApp.git'
             }
         }
+        
+        stage('install dependencies') {
+          steps {
+               echo "installing dependencies"
+               sh 'npm install'
+          }
+        }
 
 
 
