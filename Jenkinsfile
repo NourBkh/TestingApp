@@ -27,8 +27,10 @@ pipeline {
         
         stage('build docker image') {
           steps {
+             dir('app') {
               echo "building docker image"
               sh 'docker build -t $DOCKERHUB_USER/$IMAGE_NAME:latest .'
+              }
           }
         }
 
