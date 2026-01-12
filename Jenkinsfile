@@ -34,6 +34,7 @@ pipeline {
           }
         }
         
+        /*
         stage('pushing docker image') {
           steps {
              withCredentials([ usernamePassword( credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASSWORD' ) ]) {
@@ -45,13 +46,16 @@ pipeline {
             }
           }
         }
+        */
         
         stage('Deploy to Minikube') {
           steps {
             echo "Deploying to Kubernetes..."
             sh """
+                kubectl set image deployment/testingapp-deployment testingapp=$DOCKERHUB_USER/$IMAGE_NAME:latest -n $K8S_NAMESPACE
+                
+                kubectl rollout status deployment/testingapp-deployment -n $K8S_NAMESPACE
 
-               
                """
                }
              }
