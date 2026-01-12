@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKERHUB_USER = 'nourbkh'
-        DOCKERHUB_PASSWORD = 'dockerhub'
         IMAGE_NAME    = 'testingapp'
         K8S_NAMESPACE = 'default'
     }
