@@ -41,7 +41,7 @@ pipeline {
             sh 'echo \$DOCKERHUB_PASSWORD | docker login -u \$DOCKERHUB_USER --password-stdin'
             
             echo "pushing docker image to dockerhub"
-            //sh 'docker push $DOCKERHUB_USER/$IMAGE_NAME:latest'
+            sh 'docker push $DOCKERHUB_USER/$IMAGE_NAME:latest'
             }
           }
         }
@@ -50,9 +50,7 @@ pipeline {
           steps {
             echo "Deploying to Kubernetes..."
             sh """
-               //kubectl set image deployment/testingapp-deployment testingapp=$DOCKERHUB_USER $IMAGE_NAME:latest -n $K8S_NAMESPACE
-               
-              // kubectl rollout status deployment/testingapp-deployment -n $K8S_NAMESPACE
+
                
                """
                }
