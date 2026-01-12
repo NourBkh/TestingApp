@@ -5,6 +5,7 @@ pipeline {
         DOCKERHUB_USER = 'nourbkh'
         IMAGE_NAME    = 'testingapp'
         K8S_NAMESPACE = 'default'
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
 
     stages {
