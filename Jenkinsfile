@@ -44,6 +44,18 @@ pipeline {
             sh 'docker push $DOCKERHUB_USER/$IMAGE_NAME:latest'
           }
         }
+        
+        stage('Deploy to Minikube') {
+          steps {
+            echo "Deploying to Kubernetes..."
+            sh """
+               kubectl set image deployment/testingapp-deployment testingapp=$DOCKERHUB_USER $IMAGE_NAME:latest -n $K8S_NAMESPACE
+               
+               kubectl rollout status deployment/testingapp-deployment -n $K8S_NAMESPACE
+               
+               """
+               }
+             }
 
 
 
